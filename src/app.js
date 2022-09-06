@@ -6,7 +6,7 @@ app.use(express.json())
 
 const usuarios = [
   {
-    _id: 123,
+    id: 123,
     name: "João Silva",
     cpf: 90841540020,
     "birthDate": "01 / 01 / 2000",
@@ -28,7 +28,11 @@ app.post("/api/v1/user", (req,res) =>{
 })
 
 app.put("/api/v1/user/:id", (req, res) =>{
-  
+
 })
+
+function pesquisarUsuario(id){
+  return usuarios.findIndex(usuario => usuario.id == id )
+}
 
 export default app;
