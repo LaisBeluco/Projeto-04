@@ -1,17 +1,7 @@
-import http from "http";
+import app from "./src/app.js";
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 
-const rotas = {
-  "/": "API REST FULL",
-  "/api/v1/user/:id": "API REST FULL",
-}
-
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text-plain'})
-  res.end(rotas[req.url]);
-})
-
-server.listen(port, () =>{
-  console.log(`Servidor escutando de http://localhost:${port}`);
+app.listen(port, () =>{
+  console.log(`Servidor escutando de http://localhost:${port}/api/v1/user`);
 })
