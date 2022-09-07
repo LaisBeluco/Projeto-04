@@ -15,8 +15,8 @@ app.use(express.json());
 routes(app);
 
 app.get("/api/v1/user/:id", (req, res) => {
-  let index = pesquisarUsuario(req.params.id);
-  res.json(usuarios[index]);
+  let index = pesquisarUsuario(req.params.id)
+  res.json(usuarios[index])
 });
 
 app.put("/api/v1/user/:id", (req, res) => {
@@ -32,8 +32,11 @@ app.delete("/api/v1/user/:id", (req, res) => {
   res.send(`Usuário ${id} removido com sucesso!`);
 });
 
+/*
 function pesquisarUsuario(id) {
-  return usuarios.findIndex((usuario) => usuario.id == id);
+  return usuarios.findIndex(usuario => usuario.id == id);
 }
+*/
+
 
 export default app;
