@@ -14,7 +14,6 @@ app.use(express.json());
 
 routes(app);
 
-
 app.get("/api/v1/user/:id", (req, res) => {
   let index = pesquisarUsuario(req.params.id);
   res.json(usuarios[index]);

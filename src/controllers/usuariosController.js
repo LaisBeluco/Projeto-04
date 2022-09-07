@@ -6,6 +6,18 @@ class UsuarioController {
       res.status(200).json(usuarios);
     });
   };
+
+  static cadastrarUsuario = (req, res) => {
+    let usuario = new usuarios(req.body);
+
+    usuario.save((err) => {
+      if(err){
+        res.status(500).send({message:`${err.message} - falha ao cadastrar o usuário.`})
+      }else{
+        res.status(201).send(usuario.toJSON())
+      }
+    })
+  };
 }
 
 export default UsuarioController;
