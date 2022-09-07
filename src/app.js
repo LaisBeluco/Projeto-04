@@ -1,6 +1,7 @@
 import express from "express";
 import db from "./config/dbConnect.js";
 import usuarios from "./models/Usuario.js";
+import routes from "./routes/index.js"
 
 db.on("error", console.log.bind(console, "Erro de conexão"));
 db.once("open", () => {
@@ -10,22 +11,8 @@ db.once("open", () => {
 const app = express();
 
 app.use(express.json());
-/*
-const usuarios = [
-  {
-    id: 1,
-    name: "João Silva",
-    cpf: 90841540020,
-    birthDate: "01 / 01 / 2000",
-    email: "joao.silva@compasso.com",
-  },
-];
-*/
 
-app.get("/", (req, res) => {
-  res.status(200).send("API REST FULL");
-
-});
+routes(app);
 
 
 app.get("/api/v1/user/:id", (req, res) => {
