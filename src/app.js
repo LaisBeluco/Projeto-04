@@ -27,11 +27,6 @@ app.get("/", (req, res) => {
 
 });
 
-app.get("/api/v1/user", (req, res) => {
-  usuarios.find((err, usuarios) => {
-    res.status(200).json(usuarios);
-  });
-});
 
 app.get("/api/v1/user/:id", (req, res) => {
   let index = pesquisarUsuario(req.params.id);
