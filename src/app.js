@@ -19,11 +19,6 @@ app.get("/api/v1/user/:id", (req, res) => {
   res.json(usuarios[index]);
 });
 
-app.post("/api/v1/user", (req, res) => {
-  usuarios.push(req.body);
-  res.status(201).send("Usuário cadastrado com sucesso!");
-});
-
 app.put("/api/v1/user/:id", (req, res) => {
   let index = pesquisarUsuario(req.params.id);
   usuarios[index].name = req.body.name;

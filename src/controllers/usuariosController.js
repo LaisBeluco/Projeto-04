@@ -18,6 +18,12 @@ class UsuarioController {
       }
     })
   };
+
+  static atualizarUsuario= (req, res) =>{
+    const id = req.params.id;
+
+    livros.findByIdAndUpdate(id, {$set: req.body})
+  }
 }
 
 export default UsuarioController;
