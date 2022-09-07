@@ -15,7 +15,6 @@ const usuarioSchema = new mongoose.Schema({
   birthDate: { type: String, required: true },
   email: { type: String, required: true },
   adress: { type: String, required: true },
-  number: { type: String, required: true },
   complement: { type: String, required: true },
   city: { type: String, required: true },
   state: { type: String, required: true },
