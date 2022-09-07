@@ -4,7 +4,7 @@ const usuarioSchema = new mongoose.Schema({
   id: { type: String },
   name: { type: String, required: true },
   cpf: { type: Number, required: true },
-  birthDate: { type: String, required: true },
+  birthDate: { type: Date, required: true },
   email: { type: String, required: true },
   adress: { type: String, required: true },
   number: { type: Number, required: true },
@@ -12,7 +12,7 @@ const usuarioSchema = new mongoose.Schema({
   city: { type: String, required: true },
   state: { type: String, required: true },
   country: { type: String, required: true },
-  zipCode: { type: String, required: true },
+  zipCode: { type: Number, required: true },
 });
 
 const usuarios = mongoose.model("usuarios", usuarioSchema);
