@@ -1,9 +1,16 @@
 import express from "express";
+import db from "./config/dbConnect.js";
+import usuarios from "./models/Usuario.js";
+
+db.on("error", console.log.bind(console, "Erro de conexão"));
+db.once("open", () => {
+  console.log("Conexão com o banco feita com sucesso!");
+});
 
 const app = express();
 
 app.use(express.json());
-
+/*
 const usuarios = [
   {
     id: 1,
@@ -13,13 +20,17 @@ const usuarios = [
     email: "joao.silva@compasso.com",
   },
 ];
+*/
 
 app.get("/", (req, res) => {
   res.status(200).send("API REST FULL");
+
 });
 
 app.get("/api/v1/user", (req, res) => {
-  res.status(200).json(usuarios);
+  usuarios.find((err, usuarios) => {
+    res.status(200).json(usuarios);
+  });
 });
 
 app.get("/api/v1/user/:id", (req, res) => {
@@ -39,7 +50,7 @@ app.put("/api/v1/user/:id", (req, res) => {
 });
 
 app.delete("/api/v1/user/:id", (req, res) => {
-  let {id} = req.params;
+  let { id } = req.params;
   let index = pesquisarUsuario(id);
   usuarios.splice(index, 1);
   res.send(`Usuário ${id} removido com sucesso!`);
