@@ -4,7 +4,7 @@ class UsuarioController {
   static listarUsuarios = (req, res) => {
     usuarios.find((err, usuarios) => {
       res.status(200).json(usuarios);
-    });
+    }).select("-password");
   };
 
   static listarUsuarioPorId = (req, res)=>{
