@@ -16,7 +16,7 @@ const usuarioSchema = new mongoose.Schema({
     validate: [validatorCpf, 'Necessário ter 11 números no CPF'],
     required: true,
   },
-  birthDate: { type: String, required: true },
+  birthDate: { type: Date, max:"09/08/2004", required: true },
   email: { type: String, validate: /\S+@\S+.\S+/, required: true },
   password: {type: String,validate: [validatorPassWord, 'Sua senha precisa ter no mínimo 6 dígitos.'], required: true},
   adress: { type: String, required: true },

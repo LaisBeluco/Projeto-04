@@ -16,7 +16,7 @@ class UsuarioController {
       }else{
         res.status(200).send(usuarios);
       }
-    })
+    });
   }
 
   static cadastrarUsuario = (req, res) => {
