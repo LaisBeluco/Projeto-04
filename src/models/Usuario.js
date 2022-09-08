@@ -4,6 +4,10 @@ function validatorCpf(cpf) {
   return cpf.length > 10 && cpf.length < 12;
 }
 
+function validatorPassWord(pass){
+  return pass.length > 5;
+}
+
 const usuarioSchema = new mongoose.Schema({
   id: { type: String },
   name: { type: String, required: true },
@@ -13,7 +17,8 @@ const usuarioSchema = new mongoose.Schema({
     required: true,
   },
   birthDate: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { type: String, validate: /\S+@\S+.\S+/, required: true },
+  password: {type: String,validate: [validatorPassWord, 'Sua senha precisa ter no mínimo 6 dígitos.'], required: true},
   adress: { type: String, required: true },
   complement: { type: String, required: true },
   city: { type: String, required: true },
