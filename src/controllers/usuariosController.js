@@ -44,6 +44,18 @@ class UsuarioController {
       }
     });
   };
+
+  static excluirUsuario = (req, res) =>{
+    const id = req.params.id;
+
+    usuarios.findByIdAndDelete(id, (err) => {
+      if(!err){
+        res.status(200).send({message: 'Usuário removido com sucesso'})
+      }else{
+        res.status(500).send({message: err.message})
+      }
+    })
+  }
 }
 
 export default UsuarioController;
