@@ -8,6 +8,14 @@ function validatorPassWord(pass){
   return pass.length > 5;
 }
 
+function validarBirthDate(birth){
+  let birthDate = new Date(birth);
+  let today = new Date();
+  let diff = today-birthDate;
+  let age = Math.floor(diff/31557600000);
+  return age > 17;
+}
+
 const usuarioSchema = new mongoose.Schema({
   id: { type: String },
   name: { type: String, required: true },
@@ -16,7 +24,7 @@ const usuarioSchema = new mongoose.Schema({
     validate: [validatorCpf, 'Necessário ter 11 números no CPF'],
     required: true,
   },
-  birthDate: { type: Date, max:"09/08/2004", required: true },
+  birthDate: { type: Date, validate: [validarBirthDate, "Usuário precisa ter 18 anos ou mais!"], required: true },
   email: { type: String, validate: /\S+@\S+.\S+/, required: true },
   password: {type: String,validate: [validatorPassWord, 'Sua senha precisa ter no mínimo 6 dígitos.'], required: true},
   adress: { type: String, required: true },
