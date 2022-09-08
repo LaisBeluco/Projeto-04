@@ -18,7 +18,7 @@ class UsuarioController {
     const name = req.query.name;
     usuarios.find({ name: { $regex: name } }, {}, (err, usuarios) => {
       res.status(200).send(usuarios);
-    });
+    }).select("-password");
   };
 
   static listarUsuarioPorId = (req, res) => {
@@ -32,7 +32,7 @@ class UsuarioController {
       } else {
         res.status(200).send(usuarios);
       }
-    });
+    }).select("-password");
   };
 
   static cadastrarUsuario = (req, res) => {
