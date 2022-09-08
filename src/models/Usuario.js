@@ -9,7 +9,7 @@ const usuarioSchema = new mongoose.Schema({
   name: { type: String, required: true },
   cpf: {
     type: String,
-    validate: [validatorCpf, 'my error type'],
+    validate: [validatorCpf, 'Necessário ter 11 números no CPF'],
     required: true,
   },
   birthDate: { type: String, required: true },
