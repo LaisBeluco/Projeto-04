@@ -9,11 +9,11 @@ function validatorPassWord(pass){
 }
 
 function validarBirthDate(birth){
-  let birthDate = new Date(birth);
-  let today = new Date();
-  let diff = today-birthDate;
-  let age = Math.floor(diff/31557600000);
-  return age > 17;
+  let aniversario = new Date(birth);
+  let hoje = new Date();
+  let diff = hoje-aniversario;
+  let anos = Math.floor(diff/31557600000);
+  return anos > 17;
 }
 
 const usuarioSchema = new mongoose.Schema({

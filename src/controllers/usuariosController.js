@@ -4,10 +4,15 @@ class UsuarioController {
   static listarUsuarios = (req, res) => {
     usuarios
       .find((err, usuarios) => {
-        res.status(200).json(usuarios);
+        const page = req.query.page;
+        const limit = req.query.limit;
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+        const ResultadoUsuario = usuarios.slice(startIndex, endIndex);
+        res.status(200).json(ResultadoUsuario);
       })
       .select("-password");
-  };
+  }
 
   static listarUsuarioPorNome = (req, res) => {
     const name = req.query.name;
